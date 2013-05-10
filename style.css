@@ -1,0 +1,27 @@
+/*
+Theme Name: El Enano Rabioso 2015
+Theme URI: http://www.elenanorabioso.com
+Author: Rafael Tovar
+Author URI: http://www.rafaeltovar.info
+Version: 2.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: elenanorabioso
+Description: Responsive theme for El Enano Rabioso magazine based on Drew Morris, Foundation for WordPress, a Responsive Starter Theme.
+Tags: two-columns
+*
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/********************************************************
+
+Comfortable with SASS?  Check out the /css/scss folder where the elenanorabioso.scss file is the master complier
+
+////////   IMPORTANT!  Make custom edits/changes in the css/scss/elenanorabioso-custom.less file
+////////   to safely retain the ability to update the less files with future versions
+
+## sass --watch css/scss/elenanorabioso.scss:css/elenanorabioso.min.css --style compressed
+
+-------------------------------------------------- */

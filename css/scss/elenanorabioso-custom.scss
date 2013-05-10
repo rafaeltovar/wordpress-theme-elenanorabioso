@@ -1,0 +1,311 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+
+/* -----------------------------------------
+   Icons
+----------------------------------------- */
+[class*="social foundicon-"]:before {
+  font-family: "SocialFoundicons" !important;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+}
+
+[class*="general foundicon-"]:before {
+  font-family: "GeneralFoundicons" !important;
+}
+
+/* -----------------------------------------
+   Fix
+----------------------------------------- */
+.label a { color: $body-bg; }
+.widget-title { margin-bottom: 3px; }
+/* -----------------------------------------
+   Header
+----------------------------------------- */
+
+header {
+	.top-sidebar { 
+		text-align: center; 
+		background-color: #000;
+	}
+	
+	.nav-wrap { 
+		 background-color: $topbar-bg; 
+      -webkit-box-shadow: 0 0px 10px $topbar-bg;
+         -moz-box-shadow: 0 0px 10px $topbar-bg;
+              box-shadow: 0 0px 10px $topbar-bg;
+   -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+           border-radius: 0;
+	}
+}
+
+/* -----------------------------------------
+   Logo
+----------------------------------------- */
+li.name {
+	img { margin-top: 3px; }
+}
+
+@media only screen and (max-width: 769px) {
+	li.name {
+		img { margin-left: 5px; }
+	}
+}
+
+/* -----------------------------------------
+   Search
+----------------------------------------- */
+
+.top-bar ul > li.search-button a:hover,
+.top-bar ul > li.search-button.active a { background-color: $primary-color;}
+
+.top-bar ul > li.search-button:hover, .top-bar ul > li.search-button.active a { background-color: $primary-color;}
+.top-bar ul > li.search-button.active a:hover { background-color: $topbar-bg;}
+
+.search-area {
+	display: none;
+	background-color: $primary-color;
+	margin-top: -30px;
+	padding-top: 20px;
+	-moz-box-shadow: inset 0px 3px 5px rgba(0,0,0,.5);
+    -webkit-box-shadow: inset 0px 3px 5px rgba(0,0,0,.5);
+    box-shadow: inset 0px 3px 5px rgba(0,0,0,.5);
+	.row { max-width: 700px; }
+}
+
+/* -----------------------------------------
+   Carousel
+----------------------------------------- */
+#carousel { margin-bottom: 10px; }
+.orbit-slide-number {display: none; }
+.orbit-timer { visibility: hidden; }
+
+/* -----------------------------------------
+   Grid
+----------------------------------------- */
+.grid {
+	li { margin-bottom: 30px; 
+		.single-featured-image {
+			position:relative;
+			overflow:hidden;
+			margin-bottom: -10px;
+			
+			.video {
+				text-align: center;
+				position:absolute;
+				bottom: 75px;
+				
+				left:0px;
+				display: block;
+				width: 100%;
+				font-size: 400%; 
+				a:hover { color: $secondary-color;} 
+			}
+			
+			h3 {
+				background-color: Black;
+				font-size: 110%;
+				position:absolute;
+				bottom: -2px;
+				left:0px;
+				padding-left: 10px;
+				padding: 5px;
+				-moz-opacity:.80;
+				filter:alpha(opacity=80);
+				opacity:.80;
+				display: block;
+				width: 100%;
+				
+				a {
+					// no lo usamos
+				}
+				
+				a:hover {
+					color:white;
+				}
+			}
+		}
+		.label { font-size: 70%; }
+	}
+}
+
+/* -----------------------------------------
+   Article
+----------------------------------------- */
+.meta {
+	.social-buttons { padding-top: 20px; }
+	.tag.label {
+		white-space: normal;
+		text-align: left;
+		margin-bottom: 3px; 
+		text-transform: lowercase;
+	}
+} 
+
+@media only screen and (max-width: 769px) {
+	.meta { 
+		.author {text-align: right; }
+		hr { margin-top: 0px; }
+		.social-buttons { padding-top: 0px; }
+	}
+}
+
+article.post, article.page {
+	p { text-align: justify; }
+	ul, ol { list-style-position:inside; }
+}
+
+#portada-discos {
+	max-width: 320px;
+	img.img-discos { margin: 0px 0px 10px 10px; }
+	.text-discos { padding: 0px 10px 0px 10px; 
+		text-align: right;
+	}
+}
+
+.wp-caption .wp-caption-text { 
+	font-size: 65%; 
+	text-align: right; 
+	padding-right: 9px;
+}
+.wp-caption.aligncenter .wp-caption-text { padding-right: 0px; }
+
+/* -----------------------------------------
+   Blog
+----------------------------------------- */
+.blog {
+	header a h2{ color: $primary-color; }
+	header a:hover h2 { color: $anchor-font-color-hover;}
+	.meta {
+		color: grey;
+		margin-bottom: 20px;
+	
+	}
+}
+
+/* -----------------------------------------
+   Pagination fix (not work) // TODO
+   
+   <ul class="pagination">
+      <li><span class="pagination current">1</span></li>
+      <li><span class="pagination">2</span></li>
+      ...
+   </ul>
+   
+   // $pagination-link-current-background: $primary-color;
+   // $pagination-link-current-font-color: #fff;
+   // $pagination-link-current-font-weight: bold;
+   // $pagination-link-current-cursor: default;
+   // $pagination-link-current-active-bg: $primary-color;
+----------------------------------------- */
+ul.pagination {
+	li .current:parent {
+		background-color: $pagination-link-current-background; //$primary-color;
+		color: $pagination-link-current-font-color;
+		font-weight: $pagination-link-current-font-weight;
+	}
+}
+
+/* -----------------------------------------
+   LastPosts Widget styles
+----------------------------------------- */
+ul.lastposts-list { 
+	.row { padding-bottom: 0px; 
+	}
+	hr { margin: 5px 0px 10px 0px; }
+	.image.columns { 
+		padding-right: 0px;
+		a img { margin-top: 5px; }
+	}
+	.title.columns { 
+		padding-left: 5px; 
+		h7 { margin: 0px; }
+	}
+}
+
+ul.lastposts-grid-discs {
+	line-height: 1;
+	li { margin-bottom: 10px; 
+		img, a { //margin-bottom: -10px; 
+		}
+		.discos-artista {
+			font-size: 80%;  
+			margin: 0px 0px 0px 0px;
+			
+		}
+		h6 {
+			font-size: 90%;  
+		}
+	}
+}
+
+/* -----------------------------------------
+   Footer
+----------------------------------------- */
+#footer {
+	padding-top: 15px; 
+	background-color: $topbar-bg;
+	color: $secondary-color;
+	font-size: 90%;
+	h1,h2,h3,h4,h5,h6,h7 { color: $secondary-color;}
+	ul { list-style: none; }
+	
+}
+
+@media only screen and (max-width: 769px) {
+	#footer {
+		text-align: center;
+		li { 
+			display: inline; 
+			border-left: $hr-border-width $hr-border-style $hr-border-color;
+			padding: 0px 5px 0px 7px;
+		}
+	
+		li:first-child {
+			border-left: 0px;
+			padding: 0px 5px 0px 0px;
+		}
+	}
+}
+
+/* -----------------------------------------
+   Plugins
+----------------------------------------- */
+.sociable {
+	margin-top: 5px;
+	li { margin-bottom: 0px; }
+}
+
+.wp_bannerize { 
+	background-image: url('../img/publicidad.gif');
+	background-repeat: no-repeat;
+	background-position: top center;
+	padding-top: 15px;
+	padding-bottom: 5px;
+}
+
+.widget_wp_related_posts {
+	ul { list-style: none;
+		li {
+			padding-bottom: 3px;
+			border-bottom: $hr-border-width $hr-border-style $hr-border-color;
+		}
+		
+	}
+}
+
+.widget {
+	ul {list-style: none; }
+}
+
+#menu-temas-importantes {
+	li { display: inline; 
+		 border-left: $hr-border-width $hr-border-style $hr-border-color;
+		 padding: 0px 10px 0px 10px;
+	}
+	li:first-child {
+		border-left: 0px;
+		padding: 0px 10px 0px 0px;
+	}
+}
