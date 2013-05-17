@@ -82,7 +82,14 @@
 			<?php if ( dynamic_sidebar('Sidebar Bottom Header Two')) : endif; ?>
 			<hr />
 		</div>
+		
+		<?php if(is_active_sidebar('elenanorabioso_sidebar_bottom_header_three')) : ?>
+			<div class="row hide-for-small">
+				<?php dynamic_sidebar( 'Sidebar Bottom Header Three' ); ?>
+				<hr />
+			</div>
+		<?php endif; ?>
 	</header>
-
+	
 <!-- Begin Page -->
 <div class="row">

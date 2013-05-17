@@ -277,7 +277,7 @@ function elenanorabioso_widgets() {
 			'id' => 'elenanorabioso_sidebar_top_header',
 			'name' => __( 'Sidebar Top Header', 'elenanorabioso' ),
 			'description' => __( 'This sidebar is located in the top of the navigation.', 'elenanorabioso' ),
-			'before_widget' => '<div class="top-sidebar">',
+			'before_widget' => '<div class="hide-for-small  top-sidebar">',
 			'after_widget' => '</div>',
 			'before_title' => '<h5>',
 			'after_title' => '</h5>',
@@ -301,6 +301,17 @@ function elenanorabioso_widgets() {
 			'name' => __( 'Sidebar Bottom Header Two', 'elenanorabioso' ),
 			'description' => __( 'This sidebar is located in the bottom of the navigation.', 'elenanorabioso' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s large-3 columns">',
+			'after_widget' => '</div>',
+			'before_title' => '<h5>',
+			'after_title' => '</h5>',
+		) );
+	
+	// Sidebar Bottom Header Three
+	register_sidebar( array(
+			'id' => 'elenanorabioso_sidebar_bottom_header_three',
+			'name' => __( 'Sidebar Bottom Header Three', 'elenanorabioso' ),
+			'description' => __( 'This sidebar is located in the bottom of sidebar one and two.', 'elenanorabioso' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s large-12 columns">',
 			'after_widget' => '</div>',
 			'before_title' => '<h5>',
 			'after_title' => '</h5>',
@@ -672,5 +683,90 @@ class LatestPosts_Widget extends WP_Widget {
 	    include(get_template_directory().'/inc/elenanorabioso_latestposts_widget_control_template.php');
     }
 	
+}
+
+/**
+ * Last famous tags widget
+ *
+ * Widget to show last tags with more posts
+ */
+ 
+add_action('widgets_init', 'register_latest_tags_widget');
+
+function register_latest_tags_widget() {  
+    register_widget( 'LatestTags_Widget' );  
 }  
+ 
+class LatestTags_Widget extends WP_Widget {
+
+	var $Template_directory;
+
+    function LatestTags_Widget() {  
+        $widget_ops = array( 
+        	'classname' => 'latesttags', 
+        	'description' => __('Widget to show latest famous tags ', 'elenanorabioso') 
+        );  
+        
+        $control_ops = array('id_base' => 'latesttags-widget' );
+        
+        $this->Template_directory = get_template_directory().'/inc/latesttags-widget-templates';
+        
+        $this->WP_Widget( 'latesttags-widget', __('Elenanorabioso Latest Tags', 'elenanorabioso'), $widget_ops, $control_ops );  
+    }
+    
+    // display
+    function widget( $args, $instance ) {
+    	global $wpdb;
+	    extract($args); 
+	    
+	    $title = apply_filters('widget_title', $instance['title'] );
+	    $days_interval = $instance['days-interval'];  
+		$num_tags = $instance['num-tags']; 
+		
+		$sql = $wpdb->prepare("SELECT DISTINCT term_id FROM $wpdb->term_taxonomy
+			INNER JOIN $wpdb->term_relationships ON $wpdb->term_taxonomy.term_taxonomy_id=$wpdb->term_relationships.term_taxonomy_id
+			INNER JOIN $wpdb->posts ON $wpdb->posts.ID = $wpdb->term_relationships.object_id
+			WHERE DATE_SUB(CURDATE(), INTERVAL %d DAY) <= $wpdb->posts.post_date AND $wpdb->term_taxonomy.taxonomy=%s", $days_interval, "post_tag");
+
+		$term_ids = $wpdb->get_col($sql);
+
+		if(count($term_ids) > 0){
+			$tags = get_tags(array(
+				'orderby' => 'count',
+				'order'   => 'DESC',
+				'number'  => $num_tags,
+				'include' => $term_ids));
+			
+				include(get_template_directory().'/inc/elenanorabioso_latesttags_widget_display_template.php');
+			
+		} //end if		     
+	}
+    
+    function update( $new_instance, $old_instance ) {  
+    	$instance = $old_instance;  
+  
+    	//Strip tags from title and name to remove HTML  
+    	$instance['title'] = strip_tags( $new_instance['title'] );
+    	$instance['days-interval'] = $new_instance['days-interval'];
+    	$instance['num-tags'] = $new_instance['num-tags'];
+    
+    	return $instance;  
+    }
+    
+    // Control widget
+    function form($instance) {
+    
+    	$defaults = array( 
+    		'title' => '',
+    		'days-interval' => 7, // one week 
+    		'num-tags' => 5
+    	);  
+
+    	$instance = wp_parse_args((array) $instance, $defaults);
+    	
+	    include(get_template_directory().'/inc/elenanorabioso_latesttags_widget_control_template.php');
+    }
+	
+}  
+
 ?>

@@ -309,3 +309,17 @@ ul.lastposts-grid-discs {
 		padding: 0px 10px 0px 0px;
 	}
 }
+
+.latesttags {
+	li { display: inline;
+		 font-size: 90%; 
+		 border-right: $hr-border-width $hr-border-style $hr-border-color;
+		 padding: 0px 6px 0px 6px;
+	}
+	li.title { border-right: 0px;
+			padding: 0px 0px 0px 0px; }
+	li:last-child {
+		border-right: 0px;
+		padding: 0px 0px 0px 6px;
+	}
+}
