@@ -777,7 +777,7 @@ class LatestTags_Widget extends WP_Widget {
  * Calls the class on the post edit screen
  */
 function elenanorabioso_add_discos_metabox() { return new ElenanorabiosoDiscosMetaBox(); }
-function elenanorabioso_add_conciertos_metabox() { return new ElenanorabiosoConciertosMetaBox(); }
+//function elenanorabioso_add_conciertos_metabox() { return new ElenanorabiosoConciertosMetaBox(); }
 
 // Quitar campos en la edición que no es necesario
 function elenanorabioso_remove_metaboxes() {
@@ -796,10 +796,9 @@ if (is_admin()) {
 }
 
 /** 
- * The Class
+ * ElenanorabiosoDiscosMetaBox
  */
 class ElenanorabiosoDiscosMetaBox {
-    //const LANG = 'some_textdomain';
 
     var $fields;
     var $fields_key;
@@ -812,7 +811,7 @@ class ElenanorabiosoDiscosMetaBox {
 		add_action( 'save_post', array(&$this, '_save') );
 		
 		// TODO fields
-		$this->fields_key="discos";
+		$this->fields_key = "discos";
 		$this->fields = array("_artista", "_titulo", "_discografica", "_year");
     }
 
@@ -822,7 +821,7 @@ class ElenanorabiosoDiscosMetaBox {
     public function _register() {
         add_meta_box( 
              'some_meta_box_name',
-             __( 'Informaci&oacute;n de discos (opcional)', 'elenanorabioso'),
+             __('Informaci&oacute;n de discos (opcional)', 'elenanorabioso'),
             array( &$this, '_render' ),
             'post',
             'normal',
@@ -834,11 +833,13 @@ class ElenanorabiosoDiscosMetaBox {
      * Render Meta Box content
      */
     public function _render($post) {
-    
     	$values = get_post_meta($post->ID);
-       include(get_template_directory().'/inc/elenanorabioso_discos_metabox_template.php'); 
+    	include(get_template_directory().'/inc/elenanorabioso_discos_metabox_template.php'); 
     }
     
+    /**
+     * Save Meta Box content
+     */
     public function _save($post_id) {	
     	// First we need to check if the current user is authorised to do this action. 
     	if ( 'page' == $_POST['post_type'] ) {
