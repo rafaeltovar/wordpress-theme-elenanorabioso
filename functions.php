@@ -767,6 +767,98 @@ class LatestTags_Widget extends WP_Widget {
 	    include(get_template_directory().'/inc/elenanorabioso_latesttags_widget_control_template.php');
     }
 	
-}  
+}
+
+/**
+ * Add Metabox for Conciertos and Discos
+ */
+ 
+ /**
+ * Calls the class on the post edit screen
+ */
+function elenanorabioso_add_discos_metabox() { return new ElenanorabiosoDiscosMetaBox(); }
+function elenanorabioso_add_conciertos_metabox() { return new ElenanorabiosoConciertosMetaBox(); }
+
+// Quitar campos en la edición que no es necesario
+function elenanorabioso_remove_metaboxes() {
+ remove_meta_box( 'postcustom' , 'post' , 'normal' ); //removes custom fields for page
+ remove_meta_box( 'commentstatusdiv' , 'post' , 'normal' ); //removes comments status for page
+ remove_meta_box( 'commentsdiv' , 'post' , 'normal' ); //removes comments for page
+ remove_meta_box( 'trackbacksdiv' , 'post' , 'normal' );
+ //remove_meta_box( 'authordiv' , 'post' , 'normal' ); //removes author for page
+}
+
+if (is_admin()) { 
+	add_action( 'admin_init', 'elenanorabioso_add_discos_metabox' );
+	
+	// Quitar campos en la edición que no es necesario
+	add_action( 'admin_menu' , 'elenanorabioso_remove_metaboxes' );
+}
+
+/** 
+ * The Class
+ */
+class ElenanorabiosoDiscosMetaBox {
+    //const LANG = 'some_textdomain';
+
+    var $fields;
+    var $fields_key;
+    
+    public function __construct() {
+        //add_action( 'add_meta_boxes', array( &$this, 'add_meta_box' ) );
+        //registering this metabox
+		add_action( 'add_meta_boxes', array(&$this, '_register') );
+		
+		add_action( 'save_post', array(&$this, '_save') );
+		
+		// TODO fields
+		$this->fields_key="discos";
+		$this->fields = array("_artista", "_titulo", "_discografica", "_year");
+    }
+
+    /**
+     * Adds the meta box container
+     */
+    public function _register() {
+        add_meta_box( 
+             'some_meta_box_name',
+             __( 'Informaci&oacute;n de discos (opcional)', 'elenanorabioso'),
+            array( &$this, '_render' ),
+            'post',
+            'normal',
+            'high'
+        );
+    }
+
+    /**
+     * Render Meta Box content
+     */
+    public function _render($post) {
+    
+    	$values = get_post_meta($post->ID);
+       include(get_template_directory().'/inc/elenanorabioso_discos_metabox_template.php'); 
+    }
+    
+    public function _save($post_id) {	
+    	// First we need to check if the current user is authorised to do this action. 
+    	if ( 'page' == $_POST['post_type'] ) {
+	    	if ( ! current_user_can( 'edit_page', $post_id ) ) return;
+	    } else {
+		    if ( ! current_user_can( 'edit_post', $post_id ) ) return;
+		}
+
+  		$post_ID = $_POST['post_ID'];
+  		
+  		// save data if have content
+  		foreach($this->fields as $field) {
+	  		$f = $this->fields_key.$field;
+	  		if(isset($_POST[$f]) && $_POST[$f]!='') {
+	  			$mydata = sanitize_text_field($_POST[$f]);
+		  		add_post_meta($post_ID, $f, $mydata, true) or
+		  			update_post_meta($post_ID, $f, $mydata);
+	  		} // end if
+  		}
+    }
+} 
 
 ?>

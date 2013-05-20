@@ -161,6 +161,9 @@ article.post, article.page {
 	img.img-discos { margin: 0px 0px 10px 10px; }
 	.text-discos { padding: 0px 10px 0px 10px; 
 		text-align: right;
+		p { text-align: right;
+			font-size: 80%;
+		}
 	}
 }
 

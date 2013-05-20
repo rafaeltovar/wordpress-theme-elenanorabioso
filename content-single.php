@@ -47,6 +47,14 @@
 					<div class="text-discos">
 						<h4><?php echo elenanorabioso_post_custom_value('discos_artista'); ?></h4>
 						<h3><em><span><?php elenanorabioso_post_custom_value('discos_titulo'); ?></span></em></h3>
+						<?php if(get_post_custom_values('discos_discografica')!=''): ?>
+							<p class="metadata-discos">
+								<span class="discografica">
+									<em><?php elenanorabioso_post_custom_value('discos_discografica'); ?></em>
+								</span>, 
+								<span class="year"><?php elenanorabioso_post_custom_value('discos_year'); ?></span>
+							</p>
+						<?php endif; ?>  
 					<hr />
 					</div>
 				</div>
