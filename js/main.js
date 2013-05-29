@@ -50,6 +50,9 @@
 			tNext: 'Siguiente', // title for right button
 			tCounter: '' // markup of counter
 			//tCounter: '<span class="mfp-counter">%curr% of %total%</span>' // markup of counter
+		},
+		image: {
+			titleSrc: 'title' // options for image content type
 		}
 		// other options
 	});
