@@ -13,6 +13,7 @@ $articles = array();
 					<?php the_post_thumbnail($thum_size);?>
 				</a>
 	    		<div class="orbit-caption">
+	    			<h6><?php the_category(', '); ?></h6>
 	        		<h4><?php the_title();?></h4>
 	        	</div>
 	        </li>
