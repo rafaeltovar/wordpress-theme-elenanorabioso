@@ -65,9 +65,11 @@ function elenanorabioso_assets() {
 
 		if ( is_singular() ) {
 			//wp_enqueue_script( "comment-reply" );
-			wp_enqueue_script( 'klass', get_template_directory_uri() . '/js/photoswipe/lib/klass.min.js', null, '1.0');
-			wp_enqueue_script( 'photoswipe', get_template_directory_uri() . '/js/photoswipe/code.photoswipe-3.0.5.min.js', array('klass'), '3.0.5');
-			wp_enqueue_style( 'photoswipe', get_template_directory_uri().'/js/photoswipe/photoswipe.css' );
+			
+			/* Gallery */
+			wp_enqueue_style( 'magnific-popup', get_template_directory_uri().'/js/magnific-popup/magnific-popup.css' );
+			// add magnific-popup js in footer
+			wp_enqueue_script( 'magnific-popup', get_template_directory_uri() . '/js/magnific-popup/jquery.magnific-popup.min.js', null, '0.8.8', true);
 			
 		}
 		
@@ -79,11 +81,6 @@ function elenanorabioso_assets() {
 		wp_enqueue_style( 'social_foundicons', get_template_directory_uri().'/css/foundation_icons_social/stylesheets/social_foundicons.css' );
 
 		wp_enqueue_style( 'app', get_stylesheet_uri(), array('elenanorabioso') );
-
-		// Load Google Fonts API
-		// TODO quitar y meter en los estilos
-		//wp_enqueue_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Open+Sans:400,300' );
-	
 	}
 }
 
@@ -99,8 +96,10 @@ endif;
 if ( ! function_exists( 'foundation_js_init' ) ) :
 
 function foundation_js_init () {
-    echo '<script>$(document).foundation();</script>';
-    echo '<script>$(document).elenanorabioso();</script>';
+    echo '<script>$(function(){';
+    echo '$(document).foundation();';
+    echo '$(document).elenanorabioso();';
+    echo '})</script>';
 }
 
 add_action('wp_footer', 'foundation_js_init', 50);
