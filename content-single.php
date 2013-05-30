@@ -25,12 +25,7 @@
 			<div class="row">
 				<div class="large-12 columns"><span class="radius label"><?php the_category(', '); ?></span></div>
 				<div class="small-6 large-12 columns"><h5><?php the_time(get_option('date_format')); ?></h5></div>
-				<div class="small-6 large-12 columns author"><h6><?php _e('Por', 'elenanorabioso' );?> <?php the_author_link(); ?></h6></div>
-				<!-- calho mode
-				<div class="small-6 large-12 columns author"><h5><?php the_author_link(); ?></h5></div>
-				<div class="small-6 large-12 columns"><h6><?php the_time('j/n/Y'); ?></h6></div>
-				-->
-				
+				<div class="small-6 large-12 columns author"><h6><?php _e('Por', 'elenanorabioso' );?> <?php the_author_link(); ?></h6></div>	
 				<div class="large-12 columns"><?php the_tags('<span class="tag radius secondary label">','</span> <span class="tag radius secondary label">','</span>'); ?></div>
 				<?php if( function_exists('do_sociable')): ?>
 					<div class="social-buttons large-12 columns">
