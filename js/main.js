@@ -41,6 +41,7 @@
 	$('.gallery').magnificPopup({
 		delegate: 'a', // child items selector, by clicking on it popup will open
 		type: 'image',
+		fixedContentPos: true, // fix problem of gallery with android
 		gallery: {
 			enabled: true, // set to true to enable gallery
 			preload: [0,2], // read about this option in next Lazy-loading section
