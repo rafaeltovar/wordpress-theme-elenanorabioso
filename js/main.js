@@ -38,25 +38,6 @@
 		$('.search-area').show();
 	}
 		
-	$('.gallery').magnificPopup({
-		delegate: 'a', // child items selector, by clicking on it popup will open
-		type: 'image',
-		fixedContentPos: true, // fix problem of gallery with android
-		gallery: {
-			enabled: true, // set to true to enable gallery
-			preload: [0,2], // read about this option in next Lazy-loading section
-			navigateByImgClick: true,
-			arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>', // markup of an arrow button
-			tPrev: 'Anterior', // title for left button
-			tNext: 'Siguiente', // title for right button
-			tCounter: '' // markup of counter
-			//tCounter: '<span class="mfp-counter">%curr% of %total%</span>' // markup of counter
-		},
-		image: {
-			titleSrc: 'title' // options for image content type
-		}
-		// other options
-	});
   };
 
 }(this, this.document));

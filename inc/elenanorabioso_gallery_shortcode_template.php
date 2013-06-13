@@ -1,10 +1,9 @@
-<hr />
-<ul class="gallery small-block-grid-3 large-block-grid-4 <?php echo $selector; ?>">
-<?php foreach ( $attachments as $id => $attachment ):
-	$image = wp_get_attachment_image_src( $id, 'full'); ?>
+<!-- <hr /> -->
+<ul class="gallery small-block-grid-<?php echo $columns-1; ?> large-block-grid-<?php echo $columns; ?> <?php echo $selector; ?>">
+<?php foreach ( $images as $image ): ?>
 	<li>
-		<a href="<?php echo $image[0]; ?>" alt="<?php echo $attachment->post_excerpt; ?>" title="<?php echo $attachment->post_excerpt; ?>" class="th"> 
-			<?php echo wp_get_attachment_image($id, 'elenanorabioso-home'); ?>
+		<a href="<?php echo $image['src_full'][0]; ?>" alt="<?php echo $image['alt']; ?>" title="<?php echo $image['alt']; ?>" class="th"> 
+			<?php echo wp_get_attachment_image($image['id'], $size); ?>
 		</a>
 	</li>
 <?php endforeach; ?>
