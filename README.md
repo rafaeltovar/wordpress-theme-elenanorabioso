@@ -9,7 +9,14 @@ You can visit it in [www.elenanorabioso.com](http://www.elenanorabioso.com)
 
 ## Download
 
-[Download the archive](https://github.com/rafaeltovar/wordpress-theme-elenanorabioso/archive/master.zip) 
+[Download the archive](https://github.com/rafaeltovar/wordpress-theme-elenanorabioso/archive/master.zip)
+
+## Changes
+
+** Version 1.1 **
+[x] Add [Icon-Awesome](http://fortawesome.github.io/Font-Awesome/icons/).
+[x] Delete old files.
+[x] Order files.
 
 ## Features
 
@@ -20,6 +27,7 @@ Features you'll love:
 + Magazine style
 + Widgetized Sidebars
 + Multi Level Navigation
++ **NOW** [Icon awesome](http://fortawesome.github.io/Font-Awesome/icons/)!!
 
 ## Why Foundation, for WordPress?
 

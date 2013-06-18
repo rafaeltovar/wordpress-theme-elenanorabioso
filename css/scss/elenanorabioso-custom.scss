@@ -3,7 +3,7 @@
 /* -----------------------------------------
    Icons
 ----------------------------------------- */
-[class*="social foundicon-"]:before {
+/*[class*="social foundicon-"]:before {
   font-family: "SocialFoundicons" !important;
   font-weight: normal;
   font-style: normal;
@@ -12,6 +12,32 @@
 
 [class*="general foundicon-"]:before {
   font-family: "GeneralFoundicons" !important;
+}*/
+
+/* -----------------------------------------
+   Icons
+----------------------------------------- */
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+  -webkit-font-smoothing: antialiased;
+  display: inline;
+  width: auto;
+  height: auto;
+  vertical-align: baseline;
+  background-image: none !important;
+  background-position: 0% 0%;
+  background-repeat: repeat;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  text-decoration: inherit;
+  /*display: inline-block;*/
+  speak: none;
 }
 
 /* -----------------------------------------

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Functions
  *
@@ -67,8 +66,9 @@ function elenanorabioso_assets() {
 
 		// Load Stylesheets
 		wp_enqueue_style( 'elenanorabioso', get_template_directory_uri().'/css/elenanorabioso.min.css' );
-		wp_enqueue_style( 'general_foundicons', get_template_directory_uri().'/css/foundation_icons_general/stylesheets/general_foundicons.css' );
-		wp_enqueue_style( 'social_foundicons', get_template_directory_uri().'/css/foundation_icons_social/stylesheets/social_foundicons.css' );
+		wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/css/font-awesome/css/font-awesome.min.css' );
+		/*wp_enqueue_style( 'general_foundicons', get_template_directory_uri().'/css/foundation_icons_general/stylesheets/general_foundicons.css' );
+		wp_enqueue_style( 'social_foundicons', get_template_directory_uri().'/css/foundation_icons_social/stylesheets/social_foundicons.css' );*/
 
 		wp_enqueue_style( 'app', get_stylesheet_uri(), array('elenanorabioso') );
 	}

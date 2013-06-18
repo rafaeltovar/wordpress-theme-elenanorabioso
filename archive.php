@@ -4,12 +4,6 @@
  *
  * Used to display archive-type pages if nothing more specific matches a query.
  * For example, puts together date-based pages if no date.php file exists.
- *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage WP-Bootstrap
- * @since WP-Bootstrap 0.6
  */
 
 get_header();
@@ -40,7 +34,7 @@ if (have_posts() ): ?>
 		?></h6>
 	<!-- elemento destacado -->
 	<?php the_post(); ?>
-	<div id="detacado" class="row">
+	<div id="destacado" class="row">
 		<div class="large-12 columns">
 			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
 				<?php the_post_thumbnail("elenanorabioso-header");?>
@@ -50,7 +44,12 @@ if (have_posts() ): ?>
 			<hr />
 		</div>
 	</div>
-	<?php get_template_part( 'loop', 'section' ); ?>
+	
+	<ul class="grid small-block-grid-2 large-block-grid-3">
+	<?php while ( have_posts() ) : the_post(); ?>
+		<?php get_template_part( 'content'); ?>
+	<?php endwhile; // end of the loop. ?>
+	</ul>
 	
 	<?php if ( dynamic_sidebar('Sidebar Bottom Content')) : endif; ?>
 	

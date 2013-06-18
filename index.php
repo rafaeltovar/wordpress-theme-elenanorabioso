@@ -13,32 +13,15 @@ get_header(); ?>
 
 <!-- Main Content -->
 <div class="large-9 columns" role="main">
-	<span class="radius label widget-title">Novedades</span>
+	<span class="radius label widget-title"><?php _e('Novedades', 'elenanorabioso'); ?></span>
 	<?php
   	// ----> Carrousel (only if page = 1)
   	if(get_query_var('paged')==1 || !get_query_var('paged')):
-  		
-  		// get entries
-  		$sticky = get_option('sticky_posts');
-
-  		$args = array(
-  			'post__in' => $sticky, 
-  			'caller_get_posts' => 1 
-  		);
-  		
-  		query_posts($args);
-  		
-  		//$query_act = new WP_Query($args); // &paged
-  		//if ($query_act->have_posts()):
-  		if (have_posts())
-  			get_template_part( 'loop', 'carousel' );
-  			
-  		wp_reset_query(); // clean
+  	
+  			get_template_part( 'carousel' );
   			
   	endif; // end if page == 1 
   	?>
-
-
 
 	<?php
     // ------> Blog post query
@@ -64,10 +47,14 @@ get_header(); ?>
 	query_posts($args);
     
     if (have_posts()): ?>
-    	<?php get_template_part( 'loop', 'section' ); ?>
+    	<ul class="grid small-block-grid-2 large-block-grid-3">
+		<?php while ( have_posts() ) : the_post(); ?>
+			<?php get_template_part( 'content'); ?>
+		<?php endwhile; // end of the loop. ?>
+		</ul>
 	<?php else : ?>
-		<h2><?php _e('No posts.', 'foundation' ); ?></h2>
-		<p class="lead"><?php _e('Sorry about this, I couldn\'t seem to find what you were looking for.', 'foundation' ); ?></p>
+		<h2><?php _e('No posts.', 'elenanorabioso' ); ?></h2>
+		<p class="lead"><?php _e('Sorry about this, I couldn\'t seem to find what you were looking for.', 'elenanorabioso' ); ?></p>
 	<?php endif; ?>
 
 	<?php if ( dynamic_sidebar('Sidebar Bottom Content')) : endif; ?>

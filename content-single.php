@@ -3,10 +3,6 @@
  * Content Single
  *
  * Loop content in single post template (single.php)
- *
- * @package WordPress
- * @subpackage Foundation, for WordPress
- * @since Foundation, for WordPress 4.0
  */
 ?>
 

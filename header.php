@@ -65,7 +65,7 @@
 					<li class="search-button">
 						<a href="#">
 							<span class="show-for-small">Buscar</span>
-							<i style="color: #fff;" class="hide-for-small general foundicon-search"></i>
+							<span><i style="color: #fff;" class="hide-for-small icon-search"></i></span>
 						</a>
 					</li>
 				</ul><!-- end search button -->
