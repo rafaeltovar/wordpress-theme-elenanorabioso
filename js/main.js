@@ -37,6 +37,15 @@
 		$('.search-button').addClass('active');
 		$('.search-area').show();
 	}
+	
+	// grid show author
+	$('.single-featured-image').on('mouseover', function(e) {
+		$(this).find('.title h6').show();
+	});
+	
+	$('.single-featured-image').on('mouseout', function(e) {
+		$(this).find('.title h6').hide();
+	});
 		
   };
 

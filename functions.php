@@ -67,8 +67,6 @@ function elenanorabioso_assets() {
 		// Load Stylesheets
 		wp_enqueue_style( 'elenanorabioso', get_template_directory_uri().'/css/elenanorabioso.min.css' );
 		wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/css/font-awesome/css/font-awesome.min.css' );
-		/*wp_enqueue_style( 'general_foundicons', get_template_directory_uri().'/css/foundation_icons_general/stylesheets/general_foundicons.css' );
-		wp_enqueue_style( 'social_foundicons', get_template_directory_uri().'/css/foundation_icons_social/stylesheets/social_foundicons.css' );*/
 
 		wp_enqueue_style( 'app', get_stylesheet_uri(), array('elenanorabioso') );
 	}
@@ -141,6 +139,7 @@ add_action( 'init', 'elenanorabioso_menus' );
 endif;
 
 /**
+ * TODO delete don't use
  * Featured image on feed
  */
 if ( ! function_exists( 'elenanorabioso_thumbnailfeed' ) ) :
@@ -205,7 +204,7 @@ endif;
  */
 
 // Add class to navigation sub-menu
-class foundation_navigation extends Walker_Nav_Menu {
+class elenanorabioso_navigation extends Walker_Nav_Menu {
 
 function start_lvl(&$output, $depth) {
 	$indent = str_repeat("\t", $depth);
@@ -220,7 +219,6 @@ function display_element( $element, &$children_elements, $max_depth, $depth=0, $
 		Walker_Nav_Menu::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
 	}
 }
-
 /**
  * Create pagination
  */

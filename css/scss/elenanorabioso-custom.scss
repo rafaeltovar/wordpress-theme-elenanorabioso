@@ -3,20 +3,6 @@
 /* -----------------------------------------
    Icons
 ----------------------------------------- */
-/*[class*="social foundicon-"]:before {
-  font-family: "SocialFoundicons" !important;
-  font-weight: normal;
-  font-style: normal;
-  text-decoration: inherit;
-}
-
-[class*="general foundicon-"]:before {
-  font-family: "GeneralFoundicons" !important;
-}*/
-
-/* -----------------------------------------
-   Icons
------------------------------------------ */
 [class^="icon-"],
 [class*=" icon-"] {
   font-family: FontAwesome;
@@ -64,20 +50,27 @@ header {
       -moz-border-radius: 0;
            border-radius: 0;
 	}
-}
-
-/* -----------------------------------------
-   Logo
------------------------------------------ */
-li.name {
-	img { margin-top: 3px; }
+	
+	nav.top-bar {
+		// Logo
+		ul.title-area li.name {
+			img { margin-top: 3px; }
+		}
+	}
+	section.top-bar-section {
+		ul li { line-height: $topbar-height;
+			vertical-align: middle;
+			font-weight: 300;
+		}
+	}
 }
 
 @media only screen and (max-width: 769px) {
-	li.name {
+	ul.title-area li.name {
 		img { margin-left: 5px; }
 	}
 }
+
 
 /* -----------------------------------------
    Search
@@ -103,19 +96,41 @@ li.name {
 /* -----------------------------------------
    Carousel
 ----------------------------------------- */
-#carousel { margin-bottom: 10px; }
+#carousel { 
+	margin-bottom: 10px;
+	.orbit-caption { 
+		h4 { color: white; }
+		h6 { 
+			color: $primary-color;
+			text-transform: uppercase;
+			font-size: 90%;
+		}
+	}
+}
 .orbit-slide-number {display: none; }
 .orbit-timer { visibility: hidden; }
 
 /* -----------------------------------------
+   Thumbnails style
+----------------------------------------- */
+.ths{ 
+	// @extend .th;
+	
+	border: 5px solid white; // fix to firefox problem with .th
+	$shc: #c0c0c0;
+	-webkit-box-shadow: 0 0px 4px $shc; // $topbar-bg;
+    -moz-box-shadow: 0 0px 4px $shc; // $topbar-bg;
+    box-shadow: 0 0px 4px $shc; //$topbar-bg;	
+}
+/* -----------------------------------------
    Grid
 ----------------------------------------- */
 .grid {
-	li { margin-bottom: 30px; 
+	li { //margin-bottom: 30px;
 		.single-featured-image {
 			position:relative;
 			overflow:hidden;
-			margin-bottom: -10px;
+			//margin-bottom: 0px;
 			
 			.video {
 				text-align: center;
@@ -129,11 +144,24 @@ li.name {
 				a:hover { color: $secondary-color;} 
 			}
 			
-			h3 {
-				background-color: Black;
-				font-size: 110%;
+			.categories {
+				position: absolute;
+				top: -5px; //0px; //-6px;
+				left: 0px;
+				display: block;
+				text-transform: uppercase;
+				
+				.label { 
+					font-size: 75%;
+					padding-top: 5px;
+					font-weight: 300;
+				}
+			}
+			
+			.title {
+				background-color: black;
 				position:absolute;
-				bottom: -2px;
+				bottom: -9px;
 				left:0px;
 				padding-left: 10px;
 				padding: 5px;
@@ -144,12 +172,24 @@ li.name {
 				width: 100%;
 				
 				a {
-					// no lo usamos
+					color: white;
 				}
 				
 				a:hover {
-					color:white;
+					color: $primary-color;
 				}
+				
+				h3 {
+					font-size: 110%;
+				}
+				
+				h6 { 
+					color: white; 
+					font-size: 80%; 
+					padding-bottom: 10px;
+					display: none;
+				}
+				
 			}
 		}
 		.label { font-size: 70%; }
@@ -161,10 +201,10 @@ li.name {
 ----------------------------------------- */
 .meta {
 	.social-buttons { padding-top: 20px; }
+	.label { margin-bottom: 3px; }
 	.tag.label {
 		white-space: normal;
 		text-align: left;
-		margin-bottom: 3px; 
 		text-transform: lowercase;
 	}
 } 
@@ -203,7 +243,7 @@ article.post, article.page {
 /* -----------------------------------------
    Blog
 ----------------------------------------- */
-.blog {
+/*.blog {
 	header a h2{ color: $primary-color; }
 	header a:hover h2 { color: $anchor-font-color-hover;}
 	.meta {
@@ -211,7 +251,7 @@ article.post, article.page {
 		margin-bottom: 20px;
 	
 	}
-}
+}*/
 
 /* -----------------------------------------
    Pagination fix (not work) // TODO
@@ -228,13 +268,13 @@ article.post, article.page {
    // $pagination-link-current-cursor: default;
    // $pagination-link-current-active-bg: $primary-color;
 ----------------------------------------- */
-ul.pagination {
+/*ul.pagination {
 	li .current:parent {
 		background-color: $pagination-link-current-background; //$primary-color;
 		color: $pagination-link-current-font-color;
 		font-weight: $pagination-link-current-font-weight;
 	}
-}
+}*/
 
 /* -----------------------------------------
    LastPosts Widget styles

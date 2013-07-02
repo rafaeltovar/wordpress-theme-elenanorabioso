@@ -93,7 +93,7 @@ $small-screen: emCalc(769px); // 768
 
 // We use this to control the maximum number of block grid elements per row
 // $block-grid-elements: 12;
-$block-grid-default-spacing: 5px;
+$block-grid-default-spacing: emCalc(14px); // default 20px;
 
 // Enables media queries for block-grid classes. Set to false if writing semantic HTML.
 // $block-grid-media-queries: true;

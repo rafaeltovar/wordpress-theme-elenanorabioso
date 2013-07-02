@@ -69,7 +69,7 @@
 						</a>
 					</li>
 				</ul><!-- end search button -->
-					<?php wp_nav_menu( array( 'theme_location' => 'header-menu', 'menu_class' => 'right', 'container' => '', 'fallback_cb' => 'foundation_page_menu', 'walker' => new foundation_navigation() ) ); ?>
+					<?php wp_nav_menu( array( 'theme_location' => 'header-menu', 'menu_class' => 'right', 'container' => '', 'fallback_cb' => 'foundation_page_menu', 'walker' => new elenanorabioso_navigation() ) ); ?>
 				</section>
 			</nav>
 		</div>

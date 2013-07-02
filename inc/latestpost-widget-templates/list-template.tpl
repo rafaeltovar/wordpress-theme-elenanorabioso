@@ -4,7 +4,7 @@
 <?php while ( have_posts() ) : the_post(); ?>
 <li>
 	<div class="row">
-		<div class="image small-3 large-4 columns">
+		<div class="ths image small-3 large-4 columns">
 			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
 				<?php the_post_thumbnail($image_size);?>
 			</a>
